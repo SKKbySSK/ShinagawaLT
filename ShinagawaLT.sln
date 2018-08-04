@@ -15,9 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPF", "WPF", "{19FEC03E-2A9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{236A048A-91B0-44EB-B632-9526F5A92381}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedLibrary", "SharedLibrary\SharedLibrary.csproj", "{7FF9FDC3-CFD7-4A8A-8748-65D984E4D4D5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedLibrary", "TestApp\Shared\SharedLibrary\SharedLibrary.csproj", "{7FF9FDC3-CFD7-4A8A-8748-65D984E4D4D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp.WPF", "TestApp.WPF\TestApp.WPF.csproj", "{E4D8972C-4562-420B-B268-F6728897E0D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp.WPF", "TestApp\WPF\TestApp.WPF\TestApp.WPF.csproj", "{E4D8972C-4562-420B-B268-F6728897E0D0}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution

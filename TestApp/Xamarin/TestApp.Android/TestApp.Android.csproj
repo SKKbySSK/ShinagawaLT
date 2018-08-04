@@ -125,7 +125,7 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\SharedLibrary\SharedLibrary.csproj">
+    <ProjectReference Include="..\..\Shared\SharedLibrary\SharedLibrary.csproj">
       <Project>{7ff9fdc3-cfd7-4a8a-8748-65d984e4d4d5}</Project>
       <Name>SharedLibrary</Name>
     </ProjectReference>
