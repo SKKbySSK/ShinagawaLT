@@ -1,0 +1,58 @@
+﻿<Window x:Class="TestApp.WPF.MainPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:shared="clr-namespace:SharedLibrary.ViewModels;assembly=SharedLibrary"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestApp.WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="383.193" Width="375.21">
+    <Window.Resources>
+        <ResourceDictionary>
+            <shared:MainPageViewModel x:Key="viewModel"/>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource viewModel}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel VerticalAlignment="Stretch" Grid.ColumnSpan="2">
+            <Label Content="{Binding LabelText}" HorizontalAlignment="Center"/>
+            <Slider Value="{Binding SliderValue}" HorizontalAlignment="Stretch" Background="Black"/>
+            <Button Content="追加" Command="{Binding AddCommand}"/>
+        </StackPanel>
+
+        <ListView VerticalAlignment="Stretch" ItemsSource="{Binding People}" Grid.Row="1" Grid.Column="0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBox Text="{Binding Name}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="{Binding Age, StringFormat={}{0}歳}" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <DatePicker SelectedDate="{Binding Birthdate}" Grid.Column="1"/>
+                        </Grid>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ListView VerticalAlignment="Stretch" ItemsSource="{Binding Logs}" Grid.Row="1" Grid.Column="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding .}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:shared="clr-namespace:SharedLibrary.ViewModels;assembly=SharedLibrary"
+             xmlns:local="clr-namespace:TestApp"
+             x:Class="TestApp.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <shared:MainPageViewModel x:Key="viewModel"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <!--GridはUI要素を行と列で配置する要素です-->
+    <Grid BindingContext="{StaticResource viewModel}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--StackLayout(WPFではStackPanel)はUI要素を並べて配置する要素です-->
+        <StackLayout VerticalOptions="FillAndExpand" Grid.ColumnSpan="2">
+            <Label Text="{Binding LabelText}" HorizontalOptions="Center"/>
+            <Slider Value="{Binding SliderValue}" HorizontalOptions="FillAndExpand" BackgroundColor="Black"/>
+            <Button Text="追加" Command="{Binding AddCommand}"/>
+        </StackLayout>
+
+        <ListView VerticalOptions="FillAndExpand" ItemsSource="{Binding People}" CachingStrategy="RecycleElement" RowHeight="100" Grid.Row="1" Grid.Column="0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Spacing="10">
+                            <Entry Text="{Binding Name}"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding Age, StringFormat='{0}歳'}" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                <DatePicker Date="{Binding Birthdate}" Grid.Column="1"/>
+                            </Grid>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ListView VerticalOptions="FillAndExpand" ItemsSource="{Binding Logs}" CachingStrategy="RecycleElement" RowHeight="30" Grid.Row="1" Grid.Column="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <!--自身をバインドします-->
+                        <Label Text="{Binding .}"/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>
