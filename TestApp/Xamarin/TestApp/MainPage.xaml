@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:shared="clr-namespace:SharedLibrary.ViewModels;assembly=SharedLibrary"
@@ -11,6 +11,11 @@
     </ContentPage.Resources>
     <!--GridはUI要素を行と列で配置する要素です-->
     <Grid BindingContext="{StaticResource viewModel}">
+        <Grid.Padding>
+            <OnPlatform x:TypeArguments="Thickness">
+                <On Platform="iOS">0, 20, 0, 0</On>
+            </OnPlatform>
+        </Grid.Padding>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
